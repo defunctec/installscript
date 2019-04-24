@@ -209,8 +209,8 @@ zabbix_install() {
 # Declare variable choice and assign value 4
     echo Installing Zabbix
     sleep 2
-    sudo wget http://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+stretch_all.deb
-    sudo dpkg -i zabbix-release_3.4-1+stretch_all.deb
+    sudo wget https://repo.zabbix.com/zabbix/4.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.2-1+bionic_all.deb
+    sudo dpkg -i zabbix-release_4.2-1+bionic_all.deb
     sudo apt update -y
     sudo apt install zabbix-agent -y
     echo 1.Edit zabbix agent configuration file using 'nano /etc/zabbix/zabbix_agentd.conf'
