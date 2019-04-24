@@ -207,49 +207,14 @@ maintenance_scripts() {
 # Zabbix Install
 zabbix_install() {
 # Declare variable choice and assign value 4
-echo Would you like to install a Zabbix agent?
-choice=3
-# Print to stdout
- echo "1. Yes"
- echo "2. No"
- echo -n "1 for Yes 2 for No [1 or 2]? "
-# Loop while the variable choice is equal 4
-# bash while loop
-while [ "$choice" -eq '3' ]; do
- 
-# read user input
-read choice
-# bash nested if/else
-if [ "$choice" -eq '1' ] ; then
- 
-        echo "You have chosen to install a Zabbix agent"
-        sudo wget http://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+stretch_all.deb
-        sudo dpkg -i zabbix-release_3.4-1+stretch_all.deb
-        sudo apt update -y
-        sudo apt install zabbix-agent -y
-        echo 1.Edit zabbix agent configuration file using 'nano /etc/zabbix/zabbix_agentd.conf'
-        echo Server=[zabbix server ip] Hostname=[Hostname of Node] EG, Server=192.168.1.10 Hostname=MN1
-        
-
-else                   
-
-        if [ "$choice" -eq '2' ] ; then
-                 echo "Skip Zabbix agent installation"           
-                 
-        else
-         
-                if [ $choice -eq 3 ] ; then
-                        echo "Would you like to install Zabbix agent?"
-                else
-                        echo "Please make a choice between Yes or No !"
-                        echo "1. Yes"
-                        echo "2. No"
-                        echo -n "1 for Yes 2 for No [1 or 2]? "
-                        choice=3
-                fi   
-        fi
-fi
-done
+    echo Installing Zabbix
+    sleep 2
+    sudo wget http://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+stretch_all.deb
+    sudo dpkg -i zabbix-release_3.4-1+stretch_all.deb
+    sudo apt update -y
+    sudo apt install zabbix-agent -y
+    echo 1.Edit zabbix agent configuration file using 'nano /etc/zabbix/zabbix_agentd.conf'
+    echo Server=[zabbix server ip] Hostname=[Hostname of Node] EG, Server=192.168.1.10 Hostname=MN1       
 }
 
 configure_conf() {
@@ -298,14 +263,14 @@ main() {
         configure_conf
         # Configure firewall
         configure_firewall
+        # Install Zabbix
+        zabbix_install
     fi
     update_repos
     # Configure firewall
     add_cron_job
     # Maintenance Scripts
     maintenance_scripts
-    # Install Zabbix
-    zabbix_install
 }
 
 handle_arguments "$@"
