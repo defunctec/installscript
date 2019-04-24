@@ -120,6 +120,7 @@ install_dependencies() {
     sudo apt install nano -y
     sudo apt install p7zip -y
     sudo apt install curl -y
+    sudo apt install libcurl3 -y
 }
 
 # Attempt to create 1GB swap ram
