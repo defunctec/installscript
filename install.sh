@@ -215,12 +215,12 @@ choice=3
  echo -n "1 for Yes 2 for No [1 or 2]? "
 # Loop while the variable choice is equal 4
 # bash while loop
-while [ $choice -eq 3 ]; do
+while [ "$choice" -eq '3' ]; do
  
 # read user input
 read choice
 # bash nested if/else
-if [ $choice -eq 1 ] ; then
+if [ "$choice" -eq '1' ] ; then
  
         echo "You have chosen to install a Zabbix agent"
         sudo wget http://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+stretch_all.deb
@@ -233,7 +233,7 @@ if [ $choice -eq 1 ] ; then
 
 else                   
 
-        if [ $choice -eq 2 ] ; then
+        if [ "$choice" -eq '2' ] ; then
                  echo "Skip Zabbix agent installation"           
                  
         else
@@ -306,8 +306,6 @@ main() {
     maintenance_scripts
     # Install Zabbix
     zabbix_install
-    # Install VPN
-    vpn_install
 }
 
 handle_arguments "$@"
