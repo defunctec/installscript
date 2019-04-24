@@ -234,6 +234,7 @@ configure_conf() {
     echo "rpcpassword="$PW >> .crown/crown.conf 
     echo "listen=1" >> .crown/crown.conf 
     echo "server=1" >>.crown/crown.conf 
+    echo "maxconnections=10" >>.crown/crown.conf 
     echo "externalip="$IP >>.crown/crown.conf 
     if [ "$systemnode" = true ] ; then
         echo "systemnode=1" >>.crown/crown.conf
